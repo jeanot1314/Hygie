@@ -9,6 +9,8 @@ Presentation Video on [Lab_1314](https://www.youtube.com/watch?v=uz1osdS2IEg)
 
 ![Image of Pi](pictures/Hygie_presentation.jpg)
 
+![Image of Pi](pictures/Hygie_device.jpg)
+
 ## Storie
 
 The Hygie project has been designed to help women listen to and follow their bodies during this complicated period. To do this, it offers a simple and evolving interface that allows the different symptoms to be traced over time. The small device can easily fit into a coat pocket or handbag to accompany you discreetly everywhere.
@@ -58,11 +60,15 @@ Another interesting part will be to develop small boards with MOSFETs to cut the
 
 Arduino development on a Atmega328p target running at 8Mhz (FIO mode) 
 
+![Image of Pi](pictures/Hygie_breadboard.jpg)
+
 ![Image of Pi](pictures/Hygie_pulse.gif)
 
 ## 3D design
 
 ![Image of Pi](pictures/Hygie_sketchup.jpg)
+
+![Image of Pi](pictures/Hygie_device_open.png)
 
 ## Phone Graph (MIT App Inventor)
 
