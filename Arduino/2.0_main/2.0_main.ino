@@ -12,8 +12,8 @@
 #include <SoftwareSerial.h>
 #include <Adafruit_MLX90614.h>
 // Temporary replacement from MAX30100 to MAX30105 because of supply
-//#include "MAX30100.h"
-#include "MAX30105.h"
+#include "MAX30100.h"
+//#include "MAX30105.h"
 #include "heartRate.h"
 #include "RTCDS1307.h"
 #include <EEPROM.h>
@@ -338,8 +338,8 @@ SoftwareSerial hc06(2,3); // RXPIN TXPIN
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 //------------------MAX30105
-//MAX30100 sensor;
-MAX30105 particleSensor;
+MAX30100 sensor;
+//MAX30105 particleSensor;
 const byte RATE_SIZE = 4; //Increase this for more averaging. 4 is good.
 byte rates[RATE_SIZE]; //Array of heart rates
 byte rateSpot = 0;
@@ -352,13 +352,14 @@ RTCDS1307 rtc(0x68);
 
 //----------------------------------PROGRAM SETUP---------------------------------------
 void setup() {
-
+  Serial.begin(9600);
+  Serial.println("-------------------- START PROGRAM--------------------");
   pin_init(); // Initialize input/output PIN
   Wire.begin();
-  Serial.begin(9600);
   hc06_init();
   DS1307_init();
-  MAX30105_init(); // turn sensor LED OFF
+  MAX30100_init();
+  //MAX30105_init(); // turn sensor LED OFF
   EEPROM_init();
   delay(1); 
   Serial.println("-------------------- START PROGRAM MAIN LOOP --------------------");
@@ -377,8 +378,8 @@ void loop() {
 
   // Heart rate : MODE 2
   if (MAX30100_FREQUENCY_READ_PER_CYCLE == 0 && device_MODE==2){
-    if(!flag_init_MAX30105){MAX30105_start();delay(10);flag_init_MAX30105=1;}
-    MAX30105_read();
+    if(!flag_init_MAX30105){ MAX30100_read();delay(10);flag_init_MAX30105=1;}
+   
   }
   
   // Temperature : MODE 3
@@ -426,7 +427,7 @@ void loop() {
     }
     if(device_MODE != 2 && flag_init_MAX30105 == 1){
       flag_init_MAX30105=0;
-      MAX30105_init();
+      MAX30100_init();
     }
     if(device_MODE != 3 && flag_init_MLX90614 == 1){
       digitalWrite(ledRGB_Red_Pin, HIGH);
@@ -998,7 +999,7 @@ void MLX90614_read(){
 }
 
 // --------------------MAX30100 Pulse Sensor--------------------
-/*
+
 void MAX30100_init() {
   sensor.begin(pw1600, i50, sr100 );
 }
@@ -1027,9 +1028,9 @@ long meanDiff(int M) {
   avg = sum / count;
   return avg - M;
 }
-*/
+
 // --------------------MAX30105 Pulse Sensor--------------------
-void MAX30105_init() {
+/*void MAX30105_init() {
   // Initialize sensor
   if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) //Use default I2C port, 400kHz speed
   {
@@ -1103,9 +1104,9 @@ void MAX30105_read(){
   if (irValue < 50000)
     Serial.print(" No finger?");
 
-  Serial.println();   */
+  Serial.println();   
 }
-
+*/
 // --------------------HC-06 Bluetooth functions--------------------
 void hc06_init() {
   hc06.begin(9600);
