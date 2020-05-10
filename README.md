@@ -2,8 +2,10 @@
 A device to better follow your body's reactions. Hygie helps you to understand the evolution of symptoms that can affect you on daily basis
 
 Created by Jean Perardel
+
 Full Tutoriel on [Hackster](https://www.hackster.io/jeanperardel/hygie-better-follow-and-understand-your-menopause-fa8663)
-Video on [Lab_1314](https://www.youtube.com/watch?v=uz1osdS2IEg)
+
+Presentation Video on [Lab_1314](https://www.youtube.com/watch?v=uz1osdS2IEg)
 
 ![Image of Pi](pictures/Hygie_presentation.jpg)
 
@@ -22,10 +24,15 @@ The 4 buttons on the top allow you to trace the symptoms over time. Each of them
 Here is a configuration example :
 
 Button 1 (single click) : Hot Flashes
+
 Button 1 (double click) : Fatigue
+
 Button 2 (single click) : Hair Loss
+
 Button 2 (double click) : Incontinence
+
 Button 3 (single click) : Change in odor
+
 Button 4 (single click) : Mood Swings
 
 Pressing these buttons at the onset of symptoms will allow you to trace the event over time and better understand their recurrence. Using Hygie for a period of time will thus generate graphs on the mobile application.
